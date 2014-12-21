@@ -32,6 +32,7 @@ module IdentityCache
 
     attr_accessor :readonly
     attr_writer :logger
+    attr_accessor :cache_miss
 
     mattr_accessor :cache_namespace
     self.cache_namespace = "IDC:#{CACHE_VERSION}:".freeze

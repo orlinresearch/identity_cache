@@ -162,7 +162,9 @@ module IdentityCache
       end
 
       def resolve_cache_miss(id)
+        self.cache_miss = true
         object = self.includes(cache_fetch_includes).reorder(nil).where(primary_key => id).try(:first)
+        self.cache_miss = false
         object.send(:populate_association_caches) if object
         object
       end
